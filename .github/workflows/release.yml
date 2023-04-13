@@ -17,7 +17,7 @@ jobs:
 
       - name: Check Redis Latest Version
         run: |
-          HAPROXY_URL="https://www.haproxy.org"
+          HAPROXY_URL="http://www.haproxy.org"
           INDEX_PAGE=/tmp/haproxy.index.html
           curl -Lks ${HAPROXY_URL} -o ${INDEX_PAGE}
           STABLE_VERSION_LINE_NUMBER=$(cat ${INDEX_PAGE} | grep -n '(stable)'| head -n 1 |awk -F':' '{print $1+1}')
@@ -33,6 +33,7 @@ jobs:
           if [ "${TAG}" != ${STABLE_VERSION} ] ; then
             echo "GOON=true"                 >> $GITHUB_ENV
             echo "VERSION=$STABLE_VERSION"   >> $GITHUB_ENV
+            echo "SRC_URL=$SRC_URL"          >> $GITHUB_ENV
           else
             echo "GOON=false"         >> $GITHUB_ENV
             echo "Already Up to Date"
@@ -41,11 +42,13 @@ jobs:
       - name: Build HAproxy CentOS7 package
         if: env.GOON == 'true'
         run: |
+          sed -i "s#Version:.\+#Version:        ${{env.VERSION}}#" haproxy.spec
+          sed -i "s#Source0:.\+#Source0:        ${{env.SRC_URL}}#" haproxy.spec
           bash build.sh
           git config --global user.name  "LubinLew"
           git config --global user.email "lgbxyz@gmail.com"
           echo "${{env.VERSION}}" >  version.txt
-          git add version.txt
+          git add -A
           git commit -m "haproxy ${{env.VERSION}}"
           git push
 
