@@ -65,7 +65,7 @@ jobs:
       - name: Create Release Note
         if: env.GOON == 'true'
         run: |
-          echo -e "# HAproxy-${{env.VERSION}} rpm package for CentOS7(x64)\n\n" > releaseNote.md
+          echo -e "# haproxy-${{env.VERSION}} rpm package for CentOS7(x64)\n\n" > releaseNote.md
           echo -e "### Install\n"                     >> releaseNote.md
           echo -e "\`\`\`bash"                        >> releaseNote.md
           echo -e "rpm -ivh haproxy-${{env.VERSION}}-1.el7.x86_64.rpm" >> releaseNote.md
