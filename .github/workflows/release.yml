@@ -1,0 +1,84 @@
+name: release
+
+on:
+  schedule:
+    - cron: '0 0 */1 * *'
+  workflow_dispatch:
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+
+      - name: Check Redis Latest Version
+        run: |
+          HAPROXY_URL="https://www.haproxy.org"
+          INDEX_PAGE=/tmp/haproxy.index.html
+          curl -Lks ${HAPROXY_URL} -o ${INDEX_PAGE}
+          STABLE_VERSION_LINE_NUMBER=$(cat ${INDEX_PAGE} | grep -n '(stable)'| head -n 1 |awk -F':' '{print $1+1}')
+          STABLE_VERSION_LINE_CONTENT=$(cat ${INDEX_PAGE} | sed -n "${STABLE_VERSION_LINE_NUMBER}p")
+          STABLE_VERSION=$(echo ${STABLE_VERSION_LINE_CONTENT} | grep -o '\([[:digit:]]\|\.\)\+'|tail -n 1)
+          STABLE_DOWNLOAD_PATH=$(echo ${STABLE_VERSION_LINE_CONTENT} | grep -o '/download.\+tar.gz')
+          SRC_URL="${HAPROXY_URL}${STABLE_DOWNLOAD_PATH}"
+          echo "HAproxy Latest Version: ${STABLE_VERSION}"
+          PROJECT_URL="https://github.com/OpenSecHub/haproxy-packaging/releases"
+          PROJECT_LOC="location: ${PROJECT_URL}/tag/"
+          TAG=$(curl -Isk "${PROJECT_URL}/latest" | grep -i "${PROJECT_LOC}" | sed "s#${PROJECT_LOC}##i" | tr -d '\r')
+          echo "Project Latest Tag: ${TAG}"
+          if [ "${TAG}" != ${STABLE_VERSION} ] ; then
+            echo "GOON=true"                 >> $GITHUB_ENV
+            echo "VERSION=$STABLE_VERSION"   >> $GITHUB_ENV
+          else
+            echo "GOON=false"         >> $GITHUB_ENV
+            echo "Already Up to Date"
+          fi
+
+      - name: Build HAproxy CentOS7 package
+        if: env.GOON == 'true'
+        run: |
+          bash build.sh
+          git config --global user.name  "LubinLew"
+          git config --global user.email "lgbxyz@gmail.com"
+          echo "${{env.VERSION}}" >  version.txt
+          git add version.txt
+          git commit -m "haproxy ${{env.VERSION}}"
+          git push
+
+      - name: Create Tag
+        uses: rickstaa/action-create-tag@v1
+        if: env.GOON == 'true'
+        with:
+          tag: ${{env.VERSION}}
+          message: "haproxy ${{env.VERSION}}"
+
+      - name: Create Release Note
+        if: env.GOON == 'true'
+        run: |
+          echo -e "# HAproxy-${{env.VERSION}} rpm package for CentOS7(x64)\n\n" > releaseNote.md
+          echo -e "### Install\n"                     >> releaseNote.md
+          echo -e "\`\`\`bash"                        >> releaseNote.md
+          echo -e "rpm -ivh haproxy-${{env.VERSION}}-1.el7.x86_64.rpm" >> releaseNote.md
+          echo -e "\`\`\`\n"                          >> releaseNote.md
+
+      - name: Create Release
+        uses: ncipollo/release-action@v1
+        if: env.GOON == 'true'
+        with:
+          tag: ${{env.VERSION}}
+          name: "${{env.VERSION}}"
+          bodyFile: "releaseNote.md"
+          token: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Upload Release Files
+        uses: xresloader/upload-to-github-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        if: env.GOON == 'true'
+        with:
+          file: "output/RPMS/x86_64/*.rpm,output/SRPMS/*.rpm,output/build.log"
+          tags: ${{env.VERSION}}
