@@ -42,12 +42,15 @@ jobs:
       - name: Build HAproxy CentOS7 package
         if: env.GOON == 'true'
         run: |
+          BUILD_DATE=$(date +'%a %b %d %Y')
+          sed -i "s#^.\+lgbxyz@gmail.com#* ${BUILD_DATE} lgbxyz@gmail.com#" haproxy.spec 
           sed -i "s#Version:.\+#Version:        ${{env.VERSION}}#" haproxy.spec
           sed -i "s#Source0:.\+#Source0:        ${{env.SRC_URL}}#" haproxy.spec
           bash build.sh
+          date > version.txt
+          echo ${{env.VERSION}} >> version.txt
           git config --global user.name  "LubinLew"
           git config --global user.email "lgbxyz@gmail.com"
-          echo "${{env.VERSION}}" >  version.txt
           git add -A
           git commit -m "haproxy ${{env.VERSION}}"
           git push

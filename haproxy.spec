@@ -158,6 +158,6 @@ fi
 
 %changelog
 * Thu Apr 13 2023 lgbxyz@gmail.com
-- Update to version 2.7.6:
-  * https://www.haproxy.org/download/2.7/src/CHANGELOG
+- Release version %{version}:
+  * https://github.com/haproxy/haproxy/blob/master/CHANGELOG
 
