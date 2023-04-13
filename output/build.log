@@ -1,0 +1,289 @@
+Executing(%prep): /bin/sh -e /var/tmp/rpm-tmp.Cd1Re4
++ umask 022
++ cd /root/rpmbuild/BUILD
++ cd /root/rpmbuild/BUILD
++ rm -rf haproxy-2.7.6
++ /usr/bin/gzip -dc /root/rpmbuild/SOURCES/haproxy-2.7.6.tar.gz
++ /usr/bin/tar -xf -
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ /usr/bin/tar -xf -
++ /usr/bin/gzip -dc /root/rpmbuild/SOURCES/lua-5.4.4.tar.gz
++ STATUS=0
++ '[' 0 -ne 0 ']'
++ cd haproxy-2.7.6
++ /usr/bin/chmod -Rf a+rX,u+w,g-w,o-w .
++ exit 0
+Executing(%build): /bin/sh -e /var/tmp/rpm-tmp.7AAPls
++ umask 022
++ cd /root/rpmbuild/BUILD
++ cd haproxy-2.7.6
++ pushd .
+~/rpmbuild/BUILD/haproxy-2.7.6 ~/rpmbuild/BUILD/haproxy-2.7.6
++ cd ../lua-5.4.4
++ make linux
+make[1]: Entering directory `/root/rpmbuild/BUILD/lua-5.4.4/src'
+make all SYSCFLAGS="-DLUA_USE_LINUX" SYSLIBS="-Wl,-E -ldl"
+make[2]: Entering directory `/root/rpmbuild/BUILD/lua-5.4.4/src'
+gcc -std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX    -c -o lapi.o lapi.c
+gcc -std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX   -c lcode.c
+gcc -std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX    -c -o lctype.o lctype.c
+gcc -std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX    -c -o ldebug.o ldebug.c
+gcc -std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX    -c -o ldo.o ldo.c
+gcc -std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX    -c -o ldump.o ldump.c
+gcc -std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX    -c -o lfunc.o lfunc.c
+gcc -std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX    -c -o lgc.o lgc.c
+gcc -std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX   -c llex.c
+gcc -std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX    -c -o lmem.o lmem.c
+gcc -std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX    -c -o lobject.o lobject.c
+gcc -std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX    -c -o lopcodes.o lopcodes.c
+gcc -std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX   -c lparser.c
+gcc -std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX    -c -o lstate.o lstate.c
+gcc -std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX    -c -o lstring.o lstring.c
+gcc -std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX    -c -o ltable.o ltable.c
+gcc -std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX    -c -o ltm.o ltm.c
+gcc -std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX    -c -o lundump.o lundump.c
+gcc -std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX    -c -o lvm.o lvm.c
+gcc -std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX    -c -o lzio.o lzio.c
+gcc -std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX    -c -o lauxlib.o lauxlib.c
+gcc -std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX    -c -o lbaselib.o lbaselib.c
+gcc -std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX    -c -o lcorolib.o lcorolib.c
+gcc -std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX    -c -o ldblib.o ldblib.c
+gcc -std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX    -c -o liolib.o liolib.c
+gcc -std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX    -c -o lmathlib.o lmathlib.c
+gcc -std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX    -c -o loadlib.o loadlib.c
+gcc -std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX    -c -o loslib.o loslib.c
+gcc -std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX    -c -o lstrlib.o lstrlib.c
+gcc -std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX    -c -o ltablib.o ltablib.c
+gcc -std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX    -c -o lutf8lib.o lutf8lib.c
+gcc -std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX    -c -o linit.o linit.c
+ar rcu liblua.a lapi.o lcode.o lctype.o ldebug.o ldo.o ldump.o lfunc.o lgc.o llex.o lmem.o lobject.o lopcodes.o lparser.o lstate.o lstring.o ltable.o ltm.o lundump.o lvm.o lzio.o lauxlib.o lbaselib.o lcorolib.o ldblib.o liolib.o lmathlib.o loadlib.o loslib.o lstrlib.o ltablib.o lutf8lib.o linit.o 
+ranlib liblua.a
+gcc -std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX    -c -o lua.o lua.c
+gcc -std=gnu99 -o lua   lua.o liblua.a -lm -Wl,-E -ldl 
+gcc -std=gnu99 -O2 -Wall -Wextra -DLUA_COMPAT_5_3 -DLUA_USE_LINUX    -c -o luac.o luac.c
+gcc -std=gnu99 -o luac   luac.o liblua.a -lm -Wl,-E -ldl 
+make[2]: Leaving directory `/root/rpmbuild/BUILD/lua-5.4.4/src'
+make[1]: Leaving directory `/root/rpmbuild/BUILD/lua-5.4.4/src'
+++ pwd
++ make install INSTALL_TOP=/root/rpmbuild/BUILD/lua-5.4.4/lua
+cd src && mkdir -p /root/rpmbuild/BUILD/lua-5.4.4/lua/bin /root/rpmbuild/BUILD/lua-5.4.4/lua/include /root/rpmbuild/BUILD/lua-5.4.4/lua/lib /root/rpmbuild/BUILD/lua-5.4.4/lua/man/man1 /root/rpmbuild/BUILD/lua-5.4.4/lua/share/lua/5.4 /root/rpmbuild/BUILD/lua-5.4.4/lua/lib/lua/5.4
+cd src && install -p -m 0755 lua luac /root/rpmbuild/BUILD/lua-5.4.4/lua/bin
+cd src && install -p -m 0644 lua.h luaconf.h lualib.h lauxlib.h lua.hpp /root/rpmbuild/BUILD/lua-5.4.4/lua/include
+cd src && install -p -m 0644 liblua.a /root/rpmbuild/BUILD/lua-5.4.4/lua/lib
+cd doc && install -p -m 0644 lua.1 luac.1 /root/rpmbuild/BUILD/lua-5.4.4/lua/man/man1
++ popd
+~/rpmbuild/BUILD/haproxy-2.7.6
+++ nproc
++ make -j 2 TARGET=linux-glibc USE_DL=1 USE_TFO=1 USE_NS=1 USE_GETADDRINFO=1 USE_PCRE=1 USE_PCRE_JIT=1 USE_STATIC_PCRE=1 USE_LIBCRYPT=1 USE_OPENSSL=1 USE_SYSTEMD=1 USE_SLZ=1 USE_LUA=1 LUA_LIB_NAME=lua LUA_LIB=../lua-5.4.4/lua/lib LUA_INC=../lua-5.4.4/lua/include
+  CC      src/slz.o
+  CC      src/ev_poll.o
+  CC      src/ev_epoll.o
+  CC      src/cpuset.o
+  CC      src/ssl_sock.o
+  CC      src/ssl_ckch.o
+  CC      src/ssl_sample.o
+  CC      src/ssl_crtlist.o
+  CC      src/cfgparse-ssl.o
+  CC      src/ssl_utils.o
+  CC      src/jwt.o
+  CC      src/hlua.o
+  CC      src/hlua_fcn.o
+  CC      src/namespace.o
+  CC      src/mux_h2.o
+  CC      src/mux_fcgi.o
+  CC      src/mux_h1.o
+  CC      src/tcpcheck.o
+  CC      src/stream.o
+  CC      src/stats.o
+  CC      src/http_ana.o
+  CC      src/server.o
+  CC      src/stick_table.o
+  CC      src/sample.o
+  CC      src/flt_spoe.o
+  CC      src/tools.o
+  CC      src/log.o
+  CC      src/cfgparse.o
+  CC      src/peers.o
+  CC      src/backend.o
+  CC      src/resolvers.o
+  CC      src/cli.o
+  CC      src/connection.o
+  CC      src/proxy.o
+  CC      src/http_htx.o
+  CC      src/cfgparse-listen.o
+  CC      src/pattern.o
+  CC      src/check.o
+  CC      src/haproxy.o
+  CC      src/cache.o
+  CC      src/stconn.o
+  CC      src/http_act.o
+  CC      src/http_fetch.o
+  CC      src/http_client.o
+  CC      src/listener.o
+  CC      src/dns.o
+  CC      src/vars.o
+  CC      src/debug.o
+  CC      src/tcp_rules.o
+  CC      src/sink.o
+  CC      src/h1_htx.o
+  CC      src/task.o
+  CC      src/mjson.o
+  CC      src/h2.o
+  CC      src/filters.o
+  CC      src/server_state.o
+  CC      src/payload.o
+  CC      src/fcgi-app.o
+  CC      src/map.o
+  CC      src/htx.o
+  CC      src/h1.o
+  CC      src/pool.o
+  CC      src/cfgparse-global.o
+  CC      src/trace.o
+  CC      src/tcp_sample.o
+  CC      src/flt_http_comp.o
+  CC      src/mux_pt.o
+  CC      src/flt_trace.o
+  CC      src/mqtt.o
+  CC      src/acl.o
+  CC      src/sock.o
+  CC      src/mworker.o
+  CC      src/tcp_act.o
+  CC      src/ring.o
+  CC      src/session.o
+  CC      src/proto_tcp.o
+  CC      src/fd.o
+  CC      src/channel.o
+  CC      src/activity.o
+  CC      src/queue.o
+  CC      src/lb_fas.o
+  CC      src/http_rules.o
+  CC      src/extcheck.o
+  CC      src/flt_bwlim.o
+  CC      src/thread.o
+  CC      src/http.o
+  CC      src/lb_chash.o
+  CC      src/applet.o
+  CC      src/compression.o
+  CC      src/raw_sock.o
+  CC      src/ncbuf.o
+  CC      src/frontend.o
+  CC      src/errors.o
+  CC      src/uri_normalizer.o
+  CC      src/http_conv.o
+  CC      src/lb_fwrr.o
+  CC      src/sha1.o
+  CC      src/proto_sockpair.o
+  CC      src/mailers.o
+  CC      src/lb_fwlc.o
+  CC      src/ebmbtree.o
+  CC      src/cfgcond.o
+  CC      src/action.o
+  CC      src/xprt_handshake.o
+  CC      src/protocol.o
+  CC      src/proto_uxst.o
+  CC      src/proto_udp.o
+  CC      src/lb_map.o
+  CC      src/fix.o
+  CC      src/ev_select.o
+  CC      src/arg.o
+  CC      src/sock_inet.o
+  CC      src/mworker-prog.o
+  CC      src/hpack-dec.o
+  CC      src/cfgparse-tcp.o
+  CC      src/sock_unix.o
+  CC      src/shctx.o
+  CC      src/proto_uxdg.o
+  CC      src/fcgi.o
+  CC      src/eb64tree.o
+  CC      src/clock.o
+  CC      src/chunk.o
+  CC      src/cfgdiag.o
+  CC      src/signal.o
+  CC      src/regex.o
+  CC      src/lru.o
+  CC      src/eb32tree.o
+  CC      src/eb32sctree.o
+  CC      src/cfgparse-unix.o
+  CC      src/hpack-tbl.o
+  CC      src/ebsttree.o
+  CC      src/ebimtree.o
+  CC      src/base64.o
+  CC      src/auth.o
+  CC      src/uri_auth.o
+  CC      src/time.o
+  CC      src/ebistree.o
+  CC      src/dynbuf.o
+  CC      src/wdt.o
+  CC      src/pipe.o
+  CC      src/init.o
+  CC      src/http_acl.o
+  CC      src/hpack-huff.o
+  CC      src/hpack-enc.o
+  CC      src/dict.o
+  CC      src/freq_ctr.o
+  CC      src/ebtree.o
+  CC      src/hash.o
+  CC      src/dgram.o
+  CC      src/version.o
+  CC      dev/flags/flags.o
+  LD      haproxy
+  LD      dev/flags/flags
++ exit 0
+Executing(%install): /bin/sh -e /var/tmp/rpm-tmp.aN92BK
++ umask 022
++ cd /root/rpmbuild/BUILD
++ '[' /root/rpmbuild/BUILDROOT/haproxy-2.7.6-1.el7.x86_64 '!=' / ']'
++ rm -rf /root/rpmbuild/BUILDROOT/haproxy-2.7.6-1.el7.x86_64
+++ dirname /root/rpmbuild/BUILDROOT/haproxy-2.7.6-1.el7.x86_64
++ mkdir -p /root/rpmbuild/BUILDROOT
++ mkdir /root/rpmbuild/BUILDROOT/haproxy-2.7.6-1.el7.x86_64
++ cd haproxy-2.7.6
++ /usr/bin/make install DESTDIR=/root/rpmbuild/BUILDROOT/haproxy-2.7.6-1.el7.x86_64 PREFIX=/usr SBINDIR=/usr/sbin MANDIR=/usr/share/man DOCDIR=/usr/share/doc/haproxy
++ install -d -m 0750 /root/rpmbuild/BUILDROOT/haproxy-2.7.6-1.el7.x86_64/etc/haproxy/
++ install -d -m 0750 /root/rpmbuild/BUILDROOT/haproxy-2.7.6-1.el7.x86_64//usr/lib/systemd/system
++ install -d -m 0750 /root/rpmbuild/BUILDROOT/haproxy-2.7.6-1.el7.x86_64/var/lib/haproxy
++ install -p -m 0644 /root/rpmbuild/SOURCES/haproxy.cfg /root/rpmbuild/BUILDROOT/haproxy-2.7.6-1.el7.x86_64/etc/haproxy/
++ install -p -m 0644 /root/rpmbuild/SOURCES/haproxy.service /root/rpmbuild/BUILDROOT/haproxy-2.7.6-1.el7.x86_64//usr/lib/systemd/system
++ /usr/lib/rpm/find-debuginfo.sh --strict-build-id -m --run-dwz --dwz-low-mem-die-limit 10000000 --dwz-max-die-limit 110000000 /root/rpmbuild/BUILD/haproxy-2.7.6
+extracting debug info from /root/rpmbuild/BUILDROOT/haproxy-2.7.6-1.el7.x86_64/usr/sbin/haproxy
+dwz: Too few files for multifile optimization
+/usr/lib/rpm/sepdebugcrcfix: Updated 1 CRC32s, 0 CRC32s did match.
+16734 blocks
++ /usr/lib/rpm/check-buildroot
++ /usr/lib/rpm/redhat/brp-compress
++ /usr/lib/rpm/redhat/brp-strip-static-archive /usr/bin/strip
++ /usr/lib/rpm/brp-python-bytecompile /usr/bin/python 1
++ /usr/lib/rpm/redhat/brp-python-hardlink
++ /usr/lib/rpm/redhat/brp-java-repack-jars
+Processing files: haproxy-2.7.6-1.el7.x86_64
+Executing(%license): /bin/sh -e /var/tmp/rpm-tmp.9dMpU6
++ umask 022
++ cd /root/rpmbuild/BUILD
++ cd haproxy-2.7.6
++ LICENSEDIR=/root/rpmbuild/BUILDROOT/haproxy-2.7.6-1.el7.x86_64/usr/share/licenses/haproxy-2.7.6
++ export LICENSEDIR
++ /usr/bin/mkdir -p /root/rpmbuild/BUILDROOT/haproxy-2.7.6-1.el7.x86_64/usr/share/licenses/haproxy-2.7.6
++ cp -pr LICENSE /root/rpmbuild/BUILDROOT/haproxy-2.7.6-1.el7.x86_64/usr/share/licenses/haproxy-2.7.6
++ exit 0
+Provides: config(haproxy) = 2.7.6-1.el7 haproxy = 2.7.6-1.el7 haproxy(x86-64) = 2.7.6-1.el7
+Requires(interp): /bin/sh /bin/sh /bin/sh /bin/sh
+Requires(rpmlib): rpmlib(CompressedFileNames) <= 3.0.4-1 rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1
+Requires(pre): /bin/sh
+Requires(post): /bin/sh
+Requires(preun): /bin/sh
+Requires(postun): /bin/sh
+Requires: libc.so.6()(64bit) libc.so.6(GLIBC_2.10)(64bit) libc.so.6(GLIBC_2.14)(64bit) libc.so.6(GLIBC_2.16)(64bit) libc.so.6(GLIBC_2.2.5)(64bit) libc.so.6(GLIBC_2.3)(64bit) libc.so.6(GLIBC_2.3.2)(64bit) libc.so.6(GLIBC_2.3.4)(64bit) libc.so.6(GLIBC_2.4)(64bit) libc.so.6(GLIBC_2.5)(64bit) libc.so.6(GLIBC_2.6)(64bit) libcrypt.so.1()(64bit) libcrypt.so.1(GLIBC_2.2.5)(64bit) libcrypto.so.10()(64bit) libcrypto.so.10(OPENSSL_1.0.1_EC)(64bit) libcrypto.so.10(OPENSSL_1.0.2)(64bit) libcrypto.so.10(libcrypto.so.10)(64bit) libdl.so.2()(64bit) libdl.so.2(GLIBC_2.2.5)(64bit) libdl.so.2(GLIBC_2.3.3)(64bit) libm.so.6()(64bit) libm.so.6(GLIBC_2.2.5)(64bit) libpthread.so.0()(64bit) libpthread.so.0(GLIBC_2.2.5)(64bit) libpthread.so.0(GLIBC_2.3.2)(64bit) libpthread.so.0(GLIBC_2.3.4)(64bit) librt.so.1()(64bit) librt.so.1(GLIBC_2.2.5)(64bit) librt.so.1(GLIBC_2.3.3)(64bit) libssl.so.10()(64bit) libssl.so.10(libssl.so.10)(64bit) libsystemd.so.0()(64bit) libsystemd.so.0(LIBSYSTEMD_209)(64bit) rtld(GNU_HASH)
+Processing files: haproxy-debuginfo-2.7.6-1.el7.x86_64
+Provides: haproxy-debuginfo = 2.7.6-1.el7 haproxy-debuginfo(x86-64) = 2.7.6-1.el7
+Requires(rpmlib): rpmlib(FileDigests) <= 4.6.0-1 rpmlib(PayloadFilesHavePrefix) <= 4.0-1 rpmlib(CompressedFileNames) <= 3.0.4-1
+Checking for unpackaged file(s): /usr/lib/rpm/check-files /root/rpmbuild/BUILDROOT/haproxy-2.7.6-1.el7.x86_64
+Wrote: /root/rpmbuild/SRPMS/haproxy-2.7.6-1.el7.src.rpm
+Wrote: /root/rpmbuild/RPMS/x86_64/haproxy-2.7.6-1.el7.x86_64.rpm
+Wrote: /root/rpmbuild/RPMS/x86_64/haproxy-debuginfo-2.7.6-1.el7.x86_64.rpm
+Executing(%clean): /bin/sh -e /var/tmp/rpm-tmp.vJiIfN
++ umask 022
++ cd /root/rpmbuild/BUILD
++ cd haproxy-2.7.6
++ /usr/bin/rm -rf /root/rpmbuild/BUILDROOT/haproxy-2.7.6-1.el7.x86_64
++ exit 0
