@@ -73,15 +73,7 @@ jobs:
         if: env.GOON == 'true'
         with:
           tag: ${{env.VERSION}}
+          artifacts: "output/RPMS/x86_64/*.rpm,output/SRPMS/*.rpm,output/build.log"
           name: "${{env.VERSION}}"
           bodyFile: "releaseNote.md"
           token: ${{ secrets.GITHUB_TOKEN }}
-
-      - name: Upload Release Files
-        uses: xresloader/upload-to-github-release@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        if: env.GOON == 'true'
-        with:
-          file: "output/RPMS/x86_64/*.rpm,output/SRPMS/*.rpm,output/build.log"
-          tags: ${{env.VERSION}}
