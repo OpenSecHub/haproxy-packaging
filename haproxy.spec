@@ -5,7 +5,7 @@
 ##############################################################################
 
 Name:           haproxy
-Version:        2.7.6
+Version:        2.7.7
 Release:        1%{?dist}
 Summary:        The Reliable, High Performance TCP/HTTP Load Balancer
 Group:          Proxy
@@ -31,7 +31,7 @@ Requires:       pcre >= 8.32
 
 %define LuaVersion 5.4.4
 
-Source0:        http://www.haproxy.org/download/2.7/src/haproxy-2.7.6.tar.gz
+Source0:        http://www.haproxy.org/download/2.7/src/haproxy-2.7.7.tar.gz
 Source1:        http://www.lua.org/ftp/lua-%{LuaVersion}.tar.gz
 Source2:        haproxy.cfg
 Source3:        haproxy.service
@@ -157,7 +157,7 @@ fi
 
 
 %changelog
-* Thu Apr 13 2023 lgbxyz@gmail.com
+* Fri Apr 28 2023 lgbxyz@gmail.com
 - Release version %{version}:
   * https://github.com/haproxy/haproxy/blob/master/CHANGELOG
 
